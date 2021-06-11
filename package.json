@@ -1,0 +1,23 @@
+{
+  "name": "readMe",
+  "version": "1.0.0",
+  "description": "<!DOCTYPE html> <html lang=\"en\"> <head> <meta charset = \"UTF-8\"> <meta http-equiv=\"X-UA-Compatible\" contant=\"ie=edge\"> <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css\"> <title>Read Me</title> </head> <body> <h1> vfea</h1> <h2>## Description<h2> <div> vfavfda </div> <h2>## Table of Contents<h2> <div>  </div> <h2>## Installation<h2> <div>faefdaewa </div> <h2>## Usage<h2> <div>fewarewREWGREAG </div>",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cbeard22/ReadMe.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cbeard22/ReadMe/issues"
+  },
+  "homepage": "https://github.com/cbeard22/ReadMe#readme",
+  "dependencies": {
+    "inquirer": "^8.1.0"
+  }
+}
