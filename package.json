@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/cbeard22/ReadMe#readme",
   "dependencies": {
-    "inquirer": "^8.1.0"
+    "inquirer": "^8.1.0",
+    "util": "^0.12.4"
   }
 }

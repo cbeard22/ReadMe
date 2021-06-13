@@ -1,6 +1,7 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
-//const outputCyanText = (text) => console.log(`\x1b[36m${text}\x1b[0m`);
+const util = require('util');
+const asyncWrite = util.promisify(fs.writeFile);
 
 inquirer
     .prompt([
@@ -31,11 +32,9 @@ inquirer
             choices: [
                 "Apache-2.0",
                 "BSD-3-Clause",
-                "BSD-2-Clause",
-                "ISC",
                 "MIT",
                 "MPL-2.0",
-                "EPL-2.0",
+                "EPL-1.0",
                 "N/A",
             ]
         },
@@ -61,60 +60,90 @@ inquirer
         },
     ])
 
-.then(({
-    title ="/x1b[30m",
-    Description ="/x1b[30m",
-    usage,
-    license,
-    contributing,
-    Tests,
-    username,
-    email,
+    .then((response) => {
+        let {
+            title,
+            Description,
+            installation,
+            usage,
+            license,
+            contributing,
+            Tests,
+            username,
+            email,
+        } = response
+
+        asyncWrite("README.md",
+            `# ${title}
+
+
+${getBadge}           
+
+## Table of Contents
+* [Description](#description)
+* [Installation](#installation)
+* [Usage](#usage)
+* [License](#license)
+* [Contributing](#contributing)
+* [Tests](#tests)
+* [Questions](#questions)
     
-})=>{
-    const template = 
-    `# ${title}
+## Description
+${Description}
 
-    * [Description](#Description)
-    * [Installation](#Installation)
-    * [Usage](#Usage)
-    * [License](#License)
-    * [Contributing](#Contributing)
-    * [Tests](#Tests)
-    * [Questions](#Questions)
-    
-    ## Description
-    ${Description}
+## Installation
+${installation}
+## Usage
+${usage}
 
-    ## Usage
-    ${usage}
+## License
+For more information about the license, please click on the link below.
 
-    ## License
-        For more information about the license, please click on the link below.
+-[License](http:opensource.org/licenses/${license})
 
-    -[License](http:opensource.org/licenses/${license})
+## Contributing
+${contributing}
 
-    ## Contributing
-    ${contributing}
+## Tests
+${Tests}
 
-    ## Tests
-    ${Tests}
+## Questions
+* GitHub:[${username}](https://github.com/${username})
+For any questions please contact me at my email: ${email}`)
 
-    ## Questions
-    * GitHub: ${username}
-    For any questions please contact me at my email: ${email}`
-    
-    createNewFile(title,template);
-}
-);
 
-function createNewFile(fileName,data){
+        /* ,(err)=>{
+                if (err){
+                    console.log(err)
+                } 
+                console.log("Your ReadMe file was created Successfully!")
+            }) */
 
-    fs.writeFile(`./${fileName.toLowerCase().split(' ').join('')}.md`,data,(err)=>{
-        if (err){
-            console.log(err)
-        }
-        console.log("Your ReadMe file was created Successfully!")
-    })
-};
+        /* createNewFile(title,template); */
+        /* } */
+    });
+
+    function getBadge(badge){
+        switch (badge) {
+            case "Apache-2.0":
+                console.log("[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)");
+                break;
+            case "BSD-3-Clause":
+                console.log("[![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)");
+                break;
+            case 'MIT':
+                console.log("[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)");
+                break;
+            case 'MPL-2.0':
+                console.log("[![License: MPL 2.0](https://img.shields.io/badge/License-MPL%202.0-brightgreen.svg)](https://opensource.org/licenses/MPL-2.0)");
+                break;
+            case 'EPL-1.0':
+                console.log("[![License](https://img.shields.io/badge/License-EPL%201.0-red.svg)](https://opensource.org/licenses/EPL-1.0)");
+                break;
+            case 'N/A':
+                console.log();
+                break;
+
+        }};
+
 
