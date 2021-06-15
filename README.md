@@ -25,6 +25,8 @@ Walk-through Video: https://drive.google.com/file/d/14NQH-uPIHGotR2V6J96Hqi6Fw8P
 
 Once you have ran the install instructions and you can see the "package.json" and "package-lock.json" you will open terminal and type "node index.js". A series of prompts will ask you to enter information. When you have finished answering all of the prompts it will tell you that a README file was create successfully. You can then click on the README.md to view it, or right click on the README.md file and click open preview to see how it will look on GitHub.
 
+![Example of Prompt Questions not filed in](./prompts.png)
+
 ## License
 For more information about the license, please click on the link below.
 
