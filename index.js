@@ -23,7 +23,7 @@ inquirer
         {
             type: "input",
             name: "usage",
-            message: "Provide some brief instuctions on how to use your application:",
+            message: "Provide some brief instructions on how to use your application:",
         },
         {
             type: "list",
@@ -99,7 +99,7 @@ ${usage}
 ## License
 For more information about the license, please click on the link below.
 
--[License](http:opensource.org/licenses/${license})
+-[License](https:opensource.org/licenses/${license})
 
 ## Contributing
 ${contributing}
@@ -108,7 +108,7 @@ ${contributing}
 ${Tests}
 
 ## Questions
-* GitHub:[${username}](https://github.com/${username})
+* GitHub:[ ${username}](https://github.com/${username})
 For any questions please contact me at my email: ${email}`)
 
         function getBadge(badge) {
