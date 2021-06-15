@@ -56,11 +56,12 @@ inquirer
         {
             type: "input",
             name: "email",
-            message: "Please enter your email as a way to contact you if the user has any quesitions: "
+            message: "Please enter your email as a way to contact you if the user has any questions: "
         },
     ])
 
-    .then((response) => {
+    .then((response, error) => {
+
         let {
             title,
             Description,
@@ -76,8 +77,7 @@ inquirer
         asyncWrite("README.md",
             `# ${title}
 
-
-${getBadge}           
+${getBadge(license)}           
 
 ## Table of Contents
 * [Description](#description)
@@ -111,39 +111,32 @@ ${Tests}
 * GitHub:[${username}](https://github.com/${username})
 For any questions please contact me at my email: ${email}`)
 
+        function getBadge(badge) {
+            switch (badge) {
+                case "Apache-2.0":
+                    return (`[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)`);
+                    break;
+                case "BSD-3-Clause":
+                    return (`[![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)`);
+                    break;
+                case 'MIT':
+                    return (`[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)`);
+                    break;
+                case 'MPL-2.0':
+                    return (`[![License: MPL 2.0](https://img.shields.io/badge/License-MPL%202.0-brightgreen.svg)](https://opensource.org/licenses/MPL-2.0)`);
+                    break;
+                case 'EPL-1.0':
+                    return (`[![License](https://img.shields.io/badge/License-EPL%201.0-red.svg)](https://opensource.org/licenses/EPL-1.0)`);
+                    break;
+                case 'N/A':
+                    return (``);
+                    break;
+            }
+        }
 
-        /* ,(err)=>{
-                if (err){
-                    console.log(err)
-                } 
-                console.log("Your ReadMe file was created Successfully!")
-            }) */
-
-        /* createNewFile(title,template); */
-        /* } */
+        if (error) {
+            return console.log(err);
+        }
+        console.log("Your README File was created successfully!");
     });
-
-    function getBadge(badge){
-        switch (badge) {
-            case "Apache-2.0":
-                console.log("[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)");
-                break;
-            case "BSD-3-Clause":
-                console.log("[![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)");
-                break;
-            case 'MIT':
-                console.log("[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)");
-                break;
-            case 'MPL-2.0':
-                console.log("[![License: MPL 2.0](https://img.shields.io/badge/License-MPL%202.0-brightgreen.svg)](https://opensource.org/licenses/MPL-2.0)");
-                break;
-            case 'EPL-1.0':
-                console.log("[![License](https://img.shields.io/badge/License-EPL%201.0-red.svg)](https://opensource.org/licenses/EPL-1.0)");
-                break;
-            case 'N/A':
-                console.log();
-                break;
-
-        }};
-
 
